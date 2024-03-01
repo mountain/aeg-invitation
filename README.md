@@ -1,2 +1,3 @@
-# invitation
-An invitation to arithmetic expression geometry
+# An invitation to arithmetic expression geometry
+
+
