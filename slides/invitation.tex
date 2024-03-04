@@ -558,7 +558,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-    \frametitle{Embeding of the discrete grid}
+    \frametitle{Embeding of discrete grid}
     The flow equation can be solved formally
     \[
         \frac{da}{ds} = \mu \cos \theta + a \lambda \sin \theta
@@ -584,7 +584,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \frametitle{Wavefront of the zero points}
     The flow equation can be solved formally
     \[
-        \frac{da}{ds} = \sqrt {\mu^2 + a^2 \lambda^2} \cos \phi\label{eq:contour-gradient-flow}
+        \frac{da}{ds} = \sqrt {\mu^2 + a^2 \lambda^2} \cos \phi
     \]
     and we have
     \[
@@ -595,7 +595,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \begin{equation}
         a = \frac{\mu}{\lambda} \sinh(\lambda s \cos \phi)\label{eq:gradevo2}
     \end{equation}
-    Notice the circumference of a circle is $C = 2 \pi \sinh(r)$, the above equation gives us a anisotropic wavefront picture.
+    Notice the circumference of a circle is $C = 2 \pi \sinh(r)$, the above equation gives us a wavefront picture.
 \end{frame}
 
 \begin{frame}
@@ -616,6 +616,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \[
         a = - \frac{x}{y}
     \]
+    The flow equation is satisfied.
 \end{frame}
 
 \begin{frame}
@@ -657,27 +658,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-    \frametitle{Area formula}
-    \[
-        d\tau = (a_0 + \mu du) e^{\lambda dv} - (a_0 e^{\lambda dv} + \mu du)
-    \]
-
-    \[
-        d\tau = \mu \lambda du dv
-    \]
-
-    and because
-    \[
-        dS = AB du dv
-    \]
-
-    \begin{equation}
-        \frac{d\tau}{dS} = \frac{\mu \lambda}{AB}
-    \end{equation}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Demonstration}
+    \frametitle{Arithmetic torsion at scale}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             We scale up the step size
@@ -703,6 +684,46 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
             \end{center}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Area formula}
+    \[
+        d\tau = (a_0 + \mu du) e^{\lambda dv} - (a_0 e^{\lambda dv} + \mu du)
+    \]
+
+    \[
+        d\tau = \mu \lambda du dv
+    \]
+
+    and because
+    \[
+        dS = \sqrt{A^2B^2 - F^2} du dv
+    \]
+
+    \begin{equation}
+        \frac{d\tau}{dS} = \frac{\mu \lambda}{\sqrt{A^2B^2 - F^2}}
+    \end{equation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Calculation of the area}
+    We have the transformation
+    \[
+        \begin{cases}
+        x = - \mu u e^{- \lambda v} \\
+        y = e^{- \lambda v}
+        \end{cases}
+    \]
+    and we can rewrite the metric as
+    \[
+        ds^2 = \frac{1}{y^2}(\frac{dx^2}{\mu^2} + \frac{dy^2}{\lambda^2}) = du^2 - 2 \lambda u du dv + (1 + \lambda^2 u^2) dv^2
+    \]
+    So, we have
+    \begin{equation}
+        \frac{d\tau}{dS} = \frac{\mu \lambda}{1 - \lambda^2 u^2}
+    \end{equation}
+
 \end{frame}
 
 \begin{frame}
@@ -775,49 +796,49 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 
 \begin{frame}
     \frametitle{Existance}
+    $\mathfrak{E_1}$ is too rigid, we need another examples. Can we find a space that is more flexible?
+    \begin{itemize}
+        \item Local existence theorem
+        \item Global existence on arbitrary surface?
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Global structure and classification}
 
-\emph{Local structure}: decided by the flow equation~\ref{eq:flow}.
-
+\emph{Local structure}: totally decided by the flow equation.
 \emph{Classification of the global structure}
 
 \end{frame}
 
 \begin{frame}
 \frametitle{Eigenfunction of Laplacian}
-On the hyperbolic plane
-\[
-ds^2 = \frac{dx^2 + dy^2}{y^2}
-\]
-
-the Laplacian is
-\[
-\Delta = - y^2 (\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2})
-\]
-
-Given
-
-\begin{equation}
-A = - \frac{x}{y}
-\end{equation}
-
-We have
-
-$$
-\Delta A = - y^2 (\frac{\partial^2}{\partial x^2} A + \frac{\partial^2}{\partial y^2} A) = y^2 (\frac{1}{\partial y} (\frac{1}{\partial y} \frac{x}{y})) = 2 A
-$$
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Other analysis theories?}
+    Eigenfunction of Laplacian in $\mathfrak{E_1}$ space might not be a special case.
 \end{frame}
 
 \begin{frame}
     \frametitle{Singularity}
+    Recall the section of Syntactic vs. Semantic, we have to consider the singularity of the space.
+
+    In complex analysis, the singularity of a function can be classified into different types, such as removable singularity, pole, and essential singularity.
+    Similarly, we can consider the singularities in the arithmetic expression space, and their types.
+
+    This connects to the topic of divergent series in math history.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Other analysis theories?}
+    Formulate our systems as a tuple of
+    \begin{itemize}
+        \item $E(F), (H, a), (Path, Integ)$
+    \end{itemize}
+    Here we have
+    \begin{itemize}
+        \item $E(F)$: Expressions over a field $F$
+        \item $(H, a)$: A scalar field "assignment" $a$ on a space $H$
+        \item $(Path, Integ)$: all paths can be interpreted as an integral
+    \end{itemize}
+    Can we find more examples? Does complex analysis belong to this structure?
 \end{frame}
 
 \begin{frame}[fragile]
@@ -871,7 +892,7 @@ $$
 \end{frame}
 
 \begin{frame}
-    \frametitle{Hyper-operation and higher-dimensional}
+    \frametitle{Hyper-operation and higher-dimensional space}
     Hyper-operation
 
     Flow treatment of binary operation
