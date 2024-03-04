@@ -417,10 +417,10 @@ Or, we can change it to another form
 
 \end{frame}
 
-\section{Basic concepts}
+\section{Basic concepts and case study}
 
 \begin{frame}
-    \frametitle{Basic concepts}
+    \frametitle{Basic concepts: I - arithmetic expression}
     \begin{figure}[ht]\centering
     \resizebox{0.5\textwidth}{!}{\includegraphics{../images/param_curve}}
     \end{figure}
@@ -494,15 +494,6 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     and there is no algorithm that can decide whether an expression is semantically valid or not.
 \end{frame}
 
-\section{Further study}
-
-\begin{frame}
-    \frametitle{Further study: I - a broken clue}
-    \begin{figure}[ht]\centering
-    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/cayley4}}
-    \end{figure}
-\end{frame}
-
 \begin{frame}
     \frametitle{Two-generator group}
     A two-generator group generated from
@@ -530,6 +521,13 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
+    \frametitle{Basic concepts: II - Flow equation}
+    \begin{figure}[ht]\centering
+    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/param_curve}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
     \frametitle{Different forms of the flow equation}
     Local polar coordinate basis
     \begin{equation}
@@ -547,6 +545,118 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
+    \frametitle{Metric and existence condition}
+    The flow equation can be written in the form of
+    \[
+        \frac{da}{ds} = \mu du + a \lambda dv
+    \]
+    A global existence condition will limit the geometry of the space, i.e. the metric.
+    For now we only assume the metric is well-defined and the existence condition is satisfied.
+    \begin{equation}
+        ds^2 = A^2 du^2 + B^2 dv^2\label{eq:metric}
+    \end{equation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Embeding of the discrete grid}
+    The flow equation can be solved formally
+    \[
+        \frac{da}{ds} = \mu \cos \theta + a \lambda \sin \theta
+    \]
+    and the formal solution is
+    \begin{equation}\label{eq:directformalsolution}
+    a =  a_0 e^{\lambda s \sin \theta} + \frac{\mu}{\lambda} (e^{\lambda s \sin \theta} - 1) \cot \theta
+    \end{equation}
+
+    \[
+        a = a_0 e^{\lambda s \sin \theta} + \mu s \cos \theta + \frac{\mu}{2\lambda} \sin 2\theta (\frac{\lambda^2s^2}{2!} + \frac{\lambda^3s^3}{3!} \sin \theta + \frac{\lambda^4s^4}{4!} \sin^2 \theta + \cdots)
+    \]
+
+    \[
+        a = a_0 e^{\lambda s \sin \theta} + \mu s \cos \theta + \frac{\mu}{2\lambda} \Psi(s) \sin 2\theta
+    \]
+
+    So $\theta = 2k\pi$ encode addition, $\theta = 2k\pi + \frac{\pi}{2}$ encode multiplication,
+    and $\theta = 2k\pi + \pi$ encode subtraction, and $\theta = 2k\pi + \frac{3\pi}{2}$ encode division.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Wavefront of the zero points}
+    The flow equation can be solved formally
+    \[
+        \frac{da}{ds} = \sqrt {\mu^2 + a^2 \lambda^2} \cos \phi\label{eq:contour-gradient-flow}
+    \]
+    and we have
+    \[
+    \tanh(\lambda s \cos \phi - c) = \frac{\lambda a}{\sqrt{\mu^2 + \lambda^2 a^2}}
+    \]
+
+    Under the initial condition $a = 0$ when $s = 0$, we can get the following equation:
+    \begin{equation}
+        a = \frac{\mu}{\lambda} \sinh(\lambda s \cos \phi)\label{eq:gradevo2}
+    \end{equation}
+    Notice the circumference of a circle is $C = 2 \pi \sinh(r)$, the above equation gives us a anisotropic wavefront picture.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Case study - $\mathfrak{E}_1$ space}
+    \begin{figure}[ht]\centering
+    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/param_curve}}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Setting of $\mathfrak{E}_1$ space}
+    The hyperbolic space equipped with the metric
+    \[
+        ds^2 = \frac{1}{y^2}(\frac{dx^2}{\mu^2} + \frac{dy^2}{\lambda^2})
+    \]
+    and a scalar field
+    \[
+        a = - \frac{x}{y}
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{A grid on $\mathfrak{E}_1$ space}
+    \begin{figure}[ht]\centering
+    \resizebox{0.8\textwidth}{!}{\includegraphics{../images/01-grid-example-1}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Another grid on $\mathfrak{E}_1$ space}
+    \begin{figure}[ht]\centering
+    \resizebox{0.8\textwidth}{!}{\includegraphics{../images/18-grid-example-2}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Eigenfunction of the Laplacian}
+    In our setting, \(A = \frac{1}{\mu y}\) and \(B = \frac{1}{\lambda y}\):
+
+    \[
+        \Delta f = y^2 \left(\mu^2 \frac{\partial^2 f}{\partial x^2} + \lambda^2 \frac{\partial^2 f}{\partial y^2}\right)
+    \]
+
+    And for the function \(f = - \frac{x}{y}\), we have
+
+    \[
+        \Delta f = - \frac{2 \lambda^2 x}{y} = 2 \lambda^2 f
+    \]
+
+    So, we reach the conclusion that the function \(f = - \frac{x}{y}\) is a eigenfunction of the Laplacian with eigenvalue \(2 \lambda^2\).\end{frame}
+\section{Further study}
+
+\begin{frame}
+    \frametitle{Further study: I - Area formula}
+    \begin{figure}[ht]\centering
+    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/cayley4}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
     \frametitle{Area formula}
     \[
         d\tau = (a_0 + \mu du) e^{\lambda dv} - (a_0 e^{\lambda dv} + \mu du)
@@ -556,13 +666,18 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
         d\tau = \mu \lambda du dv
     \]
 
+    and because
+    \[
+        dS = AB du dv
+    \]
+
     \begin{equation}
-        d\tau = \mu \lambda dS \label{eq:area_formula2}
+        \frac{d\tau}{dS} = \frac{\mu \lambda}{AB}
     \end{equation}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Show case}
+    \frametitle{Demonstration}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             We scale up the step size
@@ -591,17 +706,37 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-    \frametitle{Further study: II - wavefront and zero lines}
+    \frametitle{A broken clue}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{../images/19-curl}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Another try}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Further study: II - new representation}
     \begin{figure}[ht]\centering
     \resizebox{0.5\textwidth}{!}{\includegraphics{../images/cayley4}}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Further study: III - new representation}
-    \begin{figure}[ht]\centering
-    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/cayley4}}
-    \end{figure}
+    \frametitle{Connections between the two grids}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/01-grid-example-1}}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/18-grid-example-2}}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \section{Fundamental unsolved problems}
