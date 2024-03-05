@@ -529,15 +529,15 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 
 \begin{frame}
     \frametitle{Different forms of the flow equation}
-    Local polar coordinate basis
+    Local polar coordinate
     \begin{equation}
         \frac{da}{ds} = \mu \cos \theta + a \lambda \sin \theta\label{eq:polar-flow}
     \end{equation}
     Local Cartesian coordinate basis
     \begin{equation}
-        \frac{da}{ds} = \mu du + a \lambda dv \label{eq:cartesian-flow}
+        da = \mu du + a \lambda dv \label{eq:cartesian-flow}
     \end{equation}
-    Contour-gradient coordinate basis
+    Contour-gradient coordinate
     \begin{equation}
         \frac{da}{ds} = \sqrt {\mu^2 + a^2 \lambda^2} \cos \phi\label{eq:contour-gradient-flow}
     \end{equation}
@@ -548,7 +548,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \frametitle{Metric and existence condition}
     The flow equation can be written in the form of
     \[
-        \frac{da}{ds} = \mu du + a \lambda dv
+        da = \mu du + a \lambda dv
     \]
     A global existence condition will limit the geometry of the space, i.e. the metric.
     For now we only assume the metric is well-defined and the existence condition is satisfied.
@@ -707,34 +707,10 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-    \frametitle{Calculation of the area}
-    We have the transformation
-    \[
-        \begin{cases}
-        x = - \mu u e^{- \lambda v} \\
-        y = e^{- \lambda v}
-        \end{cases}
-    \]
-    and we can rewrite the metric as
-    \[
-        ds^2 = \frac{1}{y^2}(\frac{dx^2}{\mu^2} + \frac{dy^2}{\lambda^2}) = du^2 - 2 \lambda u du dv + (1 + \lambda^2 u^2) dv^2
-    \]
-    So, we have
-    \begin{equation}
-        \frac{d\tau}{dS} = \frac{\mu \lambda}{1 - \lambda^2 u^2}
-    \end{equation}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{A broken clue}
+    \frametitle{A broken clue?}
     \begin{center}
         \includegraphics[width=0.7\textwidth]{../images/19-curl}
     \end{center}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Another try}
 \end{frame}
 
 \begin{frame}
@@ -758,6 +734,18 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
             \end{figure}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Arithmetic transformation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Möbius transformation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{A Rosetta stone}
 \end{frame}
 
 \section{Fundamental unsolved problems}
@@ -807,6 +795,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \frametitle{Global structure and classification}
 
 \emph{Local structure}: totally decided by the flow equation.
+
 \emph{Classification of the global structure}
 
 \end{frame}
