@@ -1,0 +1,21 @@
+\documentclass[11pt]{standalone}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+
+\begin{document}
+    \begin{tikzpicture}[x=0.5cm,y=0.5cm,z=0.3cm,>=stealth]
+        \draw[->] (xyz cs:x=-7.0) -- (xyz cs:x=7.0) node[right] {$x_0$};
+        \draw[->] (xyz cs:y=0) -- (xyz cs:y=7.0) node[right] {$x_n$};
+        \draw[->] (xyz cs:z=-7.0) -- (xyz cs:z=7.0) node[above] {$x_i$};
+
+        \node[fill,circle,inner sep=1.5pt,label={left:$\alpha$}] (p) at (xyz cs:x=-3.0, y=3.0, z=-3.0) {};
+        \node[fill,circle,inner sep=1.5pt,label={right:$\alpha+1$}] (q) at (xyz cs:x=1.8, y=-4.0, z=3.0) {};
+        \node[fill,circle,inner sep=1.5pt,label={left:$\alpha \times 2$}] (r) at (xyz cs:x=-3.0, y=3.0, z=3.0) {};
+        \node[fill,circle,inner sep=1.5pt,label={right:$(\alpha + 1) \times 2 \neq \alpha \times 2 + 1$}] (s) at (xyz cs:x=1.8, y=-4.0, z=9.0) {};
+        \draw[dashed, blue] (p) -- (q);
+        \draw[dashed, blue] (r) -- (s);
+        \draw[dashed, red] (p) -- (r);
+        \draw[dashed, red] (q) -- (s);
+    \end{tikzpicture}
+\end{document}
