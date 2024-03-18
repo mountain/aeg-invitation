@@ -481,7 +481,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
         \centering
         \resizebox{1.0\textheight}{!}{\includegraphics{../images/03-example-expression-syntax-tree-left-right.pdf}}
     \end{figure}
-    The evaluation order of threadlike expressions is unique. We take right-expanded threadlike expressions as the standard form.
+    The evaluation order of threadlike expressions is unique. We take left-expanded threadlike expressions as the standard form.
 \end{frame}
 
 \begin{frame}
@@ -581,7 +581,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-    \frametitle{Wavefront of the zero points}
+    \frametitle{Wavefront from the zero points}
     The flow equation can be solved formally
     \[
         \frac{da}{ds} = \sqrt {\mu^2 + a^2 \lambda^2} \cos \phi
@@ -631,6 +631,27 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \begin{figure}[ht]\centering
     \resizebox{0.8\textwidth}{!}{\includegraphics{../images/18-grid-example-2}}
     \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Möbius transformation}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/01-grid-example-1}}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/18-grid-example-2}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+    \begin{center}
+        \[
+            z \mapsto - \frac{1}{z}
+        \]
+    \end{center}
 \end{frame}
 
 \begin{frame}
@@ -711,42 +732,6 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \begin{center}
         \includegraphics[width=0.7\textwidth]{../images/19-curl}
     \end{center}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Further study: II - new representation}
-    \begin{figure}[ht]\centering
-    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/cayley4}}
-    \end{figure}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Möbius transformation}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \begin{figure}[ht]\centering
-            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/01-grid-example-1}}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \begin{figure}[ht]\centering
-            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/18-grid-example-2}}
-            \end{figure}
-        \end{column}
-    \end{columns}
-    \begin{center}
-        \[
-            z \mapsto - \frac{1}{z}
-        \]
-    \end{center}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Arithmetic transformation}
-\end{frame}
-
-\begin{frame}
-    \frametitle{A Rosetta stone}
 \end{frame}
 
 \section{Fundamental unsolved problems}
