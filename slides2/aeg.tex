@@ -52,19 +52,54 @@
 
 \begin{frame}
     \frametitle{How to describe a change over time?}
-    \begin{itemize}
-        \item by quantity: adding a small near-zero amount of quantity
-        \item by ratio: multiplying a near-unit ratio
-    \end{itemize}
+    \begin{columns}
+        \begin{column}{0.7\textwidth}
+            Two methods to describe a small change over time:
+            \begin{itemize}
+                \item by quantity: adding a small near-zero amount of quantity
+                \item by ratio: multiplying a near-unit ratio
+            \end{itemize}
+            Traditional calculus is based on the first method, Riemann integral is additive.
+            We can use functions $\exp$ and $\log$ to convert between the two methods.
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{1.0\textwidth}{!}{\includegraphics{../images/fluxions}}
+            \caption{Method of Fluxions}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
     \frametitle{Product integration}
+    \begin{columns}
+            \begin{column}{0.3\textwidth}
+                \begin{figure}[ht]\centering
+                \resizebox{1.0\textwidth}{!}{\includegraphics{../images/vito_volterra}}
+                \caption{Vito Volterra}
+                \end{figure}
+            \end{column}
+            \begin{column}{0.7\textwidth}
+            Matrix-valued non-commutative derivative and integration, left and right
+            \begin{itemize}
+                \item $\frac{d}{dx} A(x) = \lim_{\Delta x \to 0} \frac{A(x + \Delta x) A^{-1}(x) - I}{\Delta x}$
+                \item $A(x) \frac{d}{dx} = \lim_{\Delta x \to 0} \frac{A^{-1}(x) A(x + \Delta x) - I}{\Delta x}$
+                \item $\prod_{a}^{b} (I + A(x) dx) = \lim_{\nu(P) \to 0} \prod_{i=m}^{1}(I + A(\xi_i))$
+                \item $(I + A(x) dx) \prod_{a}^{b}  = \lim_{\nu(P) \to 0} \prod_{i=1}^{m}(I + A(\xi_i))$
+            \end{itemize}
+            An interesting formula connect product integration and normal additive integration
+            $\prod_a^b (I + A(x) dx) = I + \int_a^b A(x) dx + \int_a^b \int_a^x A(x) A(y) dy dx + \cdots$
+            \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
-    \frametitle{How about mix up additional and multiplicative steps?}
-    First order non-homogeneous differential equation
+    \frametitle{How about mix up additive and multiplicative steps?}
+    Question: How about mix additive and multiplicative steps up in one process?
+
+    We can get a first order non-homogeneous differential equation
+    $$ \frac{dx}{dt} = (1 + f(t)) x + g(t) $$
 \end{frame}
 
 \begin{frame}
@@ -658,17 +693,38 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-    \frametitle{Complexification}
+    \frametitle{AEG over complex numbers}
+    We cannot make $\times -1$ compatible with the flow equation in the real number case,
+    but we can do it in the complex number case easily with the imaginary unit $i$.
+    complex arithmetic expression space is mandatory in the theory.
 \end{frame}
 
 \begin{frame}
-    \frametitle{Hyperoperations}
+    \frametitle{Hyper-operations}
+    Repeating one operation to generate operation in next order
+    \begin{table}[!ht]
+        \centering
+        \begin{tabular}{|l|l|l|}
+            \hline
+            Order & Operation &  Notion \\
+            \hline
+            0 & Succession & $a + 1$ \\
+            1 & Addition & $a + b$ \\
+            2 & Multiplication & $a \times b$ \\
+            3 & Exponentiation & $a^b$ \\
+            4 & Tetration & $a [4] b$ \\
+            5 & Pentation & $a [5] b$ \\
+            6 & Hexation & $a [6] b$ \\
+            \hline
+       \end{tabular}\label{tab:table}
+    \end{table}
+    Can we compose high dimensional AEG space by hyper-operations?
 \end{frame}
 
-\section{Future directions: geometry, analysis, and computation}
+\section{Future directions: geometry, analysis and computation}
 
 \begin{frame}
-    \frametitle{Future directions: geometry, analysis, and computation}
+    \frametitle{Future directions: geometry, analysis and computation}
     \begin{figure}[ht]\centering
     \resizebox{0.5\textwidth}{!}{\includegraphics{../images/knot03}}
     \end{figure}
@@ -682,10 +738,77 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
+    \frametitle{Arithmetic torsion at scale}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            We scale up the step size
+
+            For one step, we have
+            \begin{equation}
+            (x + 1) \times 2 - (x \times 2 + 1) = 1
+            \end{equation}
+
+            Extending this to two steps, we encounter a different situation:
+            \begin{equation}
+            (x + 2) \times 4 - (x \times 4 + 2) = 6
+            \end{equation}
+
+            And for three steps, the pattern continues:
+            \begin{equation}
+            (x + 3) \times 8 - (x \times 8 + 3) = 21
+            \end{equation}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=1.0\textwidth]{../images/17-area-formula}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Area formula}
+    \[
+        d\tau = (a_0 + \mu du) e^{\lambda dv} - (a_0 e^{\lambda dv} + \mu du)
+    \]
+
+    \[
+        d\tau = \mu \lambda du dv
+    \]
+
+    and because
+    \[
+        dS = \sqrt{A^2B^2 - F^2} du dv
+    \]
+
+    \begin{equation}
+        \frac{d\tau}{\mu \lambda} = \frac{dS}{\sqrt{A^2B^2 - F^2}}
+    \end{equation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Curvature?}
+    Arithmetic torsion is a quantity defined as a measure to reflect how the generators are non-commutative.
+    It is defined on path, but when we scale up the step size, we find that torsion is
+    related to the size of an area.
+
+    Similar case can be found in the curvature of a surface, stated by the Gauss-Bonnet theorem.
+
+    Can we find a connection between arithmetic torsion and curvature?
+\end{frame}
+
+
+\begin{frame}
     \frametitle{Analysis}
     \begin{figure}[ht]\centering
     \resizebox{0.5\textwidth}{!}{\includegraphics{../images/param_curve}}
     \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Path integration?}
+    We may extends Riemann integral to a path integral.
+    What properties should the path integral have? Is the eigenfunction of Laplacian in $\mathfrak{E}_1$ a special case?
 \end{frame}
 
 \begin{frame}
@@ -701,38 +824,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
         \item $(Path, Integ)$: all paths can be interpreted as an integral
     \end{itemize}
     Can we find more examples? Does complex analysis belong to this structure?
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Flow perspectives}
-\begin{itemize}
-    \item Function as flow
-\end{itemize}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{center}
-    \begin{tikzcd}
-        H && H \\
-        R && R
-        \arrow["l", from=1-1, to=1-3]
-        \arrow["\nu"', from=1-1, to=2-1]
-        \arrow["\nu", from=1-3, to=2-3]
-        \arrow["k"', from=2-1, to=2-3]
-    \end{tikzcd}
-\end{center}
-\end{column}
-\begin{column}{0.5\textwidth}
-    \begin{figure}[ht]\centering
-    \resizebox{\textwidth}{!}{\includegraphics{../images/flow}}
-    \end{figure}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Integral as flow}
-    Riemann sum is purely additional.
-    Can we extend it by mixing addition and multiplication?
+    We conjecture that complex analysis is a 1-dimensional additive AEG theory.
 \end{frame}
 
 \begin{frame}
@@ -740,6 +832,50 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \begin{figure}[ht]\centering
     \resizebox{0.5\textwidth}{!}{\includegraphics{../images/param_curve}}
     \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Flow perspectives}
+    \begin{itemize}
+        \item Function as flow
+        \item Computation as flow, Effective flow
+    \end{itemize}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \begin{tikzcd}
+                    H && H \\
+                    R && R
+                    \arrow["l", from=1-1, to=1-3]
+                    \arrow["\nu"', from=1-1, to=2-1]
+                    \arrow["\nu", from=1-3, to=2-3]
+                    \arrow["k"', from=2-1, to=2-3]
+                \end{tikzcd}
+            \end{center}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{\textwidth}{!}{\includegraphics{../images/flow}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Binary numeral as effective flow}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{../images/binarynumeral}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Multiplication as effective flow?}
+    Using multiplication as an case study, we should focus on the following questions:
+    \begin{itemize}
+        \item How to define the flow of multiplication?
+        \item How to measure the time complexity of multiplication flow?
+        \item How to measure the space complexity of multiplication flow?
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
