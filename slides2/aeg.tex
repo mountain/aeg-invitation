@@ -39,9 +39,10 @@
 
 \begin{frame}
     \frametitle{Background, our idea and exploration}
-    \begin{figure}[ht]\centering
-    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/knot03}}
-    \end{figure}
+    \begin{enumerate}
+        \item Background
+        \item Our idea and exploration
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -371,11 +372,13 @@ The famous example of word2vec
 
     \begin{itemize}
         \item black line $1 \times 8 - 5 = 3$
+        \item purple line $(1 - \frac{5}{8}) \times 8 = 3$
+        \item orange line: a speical integration
     \end{itemize}
 
     \begin{figure}[ht]
         \centering
-        \resizebox{0.7\textwidth}{!}{
+        \resizebox{0.6\textwidth}{!}{
             \begin{tikzpicture}
                 \draw [black, line width=0.6pt, ->] (0,0) to[out=90,in=270] (0,8.25);
                 \node [anchor=south] at (0,8.5) {y};
@@ -511,9 +514,11 @@ The famous example of word2vec
 
 \begin{frame}
     \frametitle{Basic concepts, case study and unsolved problems}
-    \begin{figure}[ht]\centering
-    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/knot03}}
-    \end{figure}
+    \begin{enumerate}
+        \item Basic concepts
+        \item Case study: $\mathfrak{E}_1 space$
+        \item Unsolved problems
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -748,13 +753,93 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     Can we compose high dimensional AEG space by hyper-operations?
 \end{frame}
 
+\section{Complex analysis in a nutshell}
+
+\begin{frame}
+    \frametitle{Complex analysis in a nutshell}
+    \begin{enumerate}
+        \item Complex differentiable
+        \item Analytic
+        \item Holomorphic
+        \item Conformal
+        \item Maximum modulus principle
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Complex differentiable}
+    The Cauchy-Riemann condition
+    \[
+        \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x}
+    \]
+    setup the compatibility between the complex structure and the differential structure, which means any path approaching
+    a point should lead to the same derivative.
+    \[
+        \frac{\delta f}{\delta z} = \frac{\delta u + i \delta v}{\delta x + i \delta y}
+    \]
+    \[
+        \left. \frac{\delta f}{\delta z} \right \rvert_{\delta y=0}= \frac{\delta u}{\delta x} + i \frac{\delta v}{\delta x}
+    \]
+    \[
+        \left. \frac{\delta f}{\delta z} \right \rvert_{\delta x=0} = - i \frac{\delta u}{\delta y} + \frac{\delta v}{\delta y}
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Holomorphic function}
+    A function is holomorphic if it is complex differentiable at every point in its domain.
+    \[
+        f(z) = u(x, y) + i v(x, y)
+    \]
+    $u$ and $v$ are a pair of harmonic functions, which satisfy the Laplace equation, and are conjugate to each other.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Analytic function}
+    A function is analytic if and only if its Taylor series at point $z_0$ converges to the function in some neighborhood of $z_0$
+    for every $z_0$ in its domain.
+    \[
+        f(z) = \sum_{n=0}^\infty a_{n} \left( z-z_0 \right)^{n} = a_0 + a_1 (z-z_0) + a_2 (z-z_0)^2 + \cdots
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cauchy integral formula}
+    A function $f$ is holomorphic in a domain and continuous on the boundary of the domain.
+    For any point $z$ in the domain, $C$ is a closed rectifiable curve which has winding number one around $z$,
+    and $C$ is contained in the domain, then we have
+    \[
+        f(z) = \frac{1}{2 \pi i} \oint_{C} \frac{f(\zeta)}{\zeta - z} d\zeta
+    \]
+    We can use boundary value to determine the value of the function in the domain.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conformal mapping}
+    \begin{figure}[ht]\centering
+    \resizebox{0.6\textwidth}{!}{\includegraphics{../images/conformal}}
+    \end{figure}
+    \small{image credit: https://en.wikipedia.org/wiki/Cauchy-Riemann\_equations}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Maximum modulus principle}
+    The modulus of a holomorphic function cannot exhibit a strict maximum that is strictly within its domain.
+    \begin{figure}[ht]\centering
+    \resizebox{0.3\textwidth}{!}{\includegraphics{../images/maximum_modulus_principle}}
+    \end{figure}
+    \small{image credit: https://en.wikipedia.org/wiki/Maximum\_modulus\_principle}
+\end{frame}
+
 \section{Future directions: geometry, analysis and computation}
 
 \begin{frame}
     \frametitle{Future directions: geometry, analysis and computation}
-    \begin{figure}[ht]\centering
-    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/knot03}}
-    \end{figure}
+    \begin{enumerate}
+        \item Geometry
+        \item Analysis
+        \item Computation
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -850,15 +935,9 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \[
         \frac{da}{ds} = \mu \cos \theta + a \lambda \sin \theta
     \]
-    \[
-        da = \mu du + a \lambda dv
-    \]
-    \[
-        a_0 + da = \mu du + a_0 (1 + \lambda dv)
-    \]
     The picture here is that any path escape from a point leads to a different value.
     This can be also interpreted as a differentiability condition, any path approaching a point should lead to the same
-    value, which is similar to the Cauchy–Riemann equations in complex analysis.
+    derivative, which is similar to the Cauchy–Riemann equations in complex analysis.
 \end{frame}
 
 \begin{frame}
@@ -939,14 +1018,16 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \begin{frame}
     \frametitle{Binary numeral as effective flow}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{../images/binarynumeral}
+        \includegraphics[width=0.6\textwidth]{../images/binarynumeral}
     \end{center}
 \end{frame}
 
 \begin{frame}
     \frametitle{Binary numeral as effective flow}
+    We have
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{../images/multiplication}
+         $\frac{3}{2}_{10} = 1.1_{2}$,  $\frac{7}{4}_{10} = 1.11_{2}$ and $\frac{21}{8}_{10} = 10.101_{2}$.
+        \includegraphics[width=0.7\textwidth]{../images/multiplication}
     \end{center}
 \end{frame}
 
@@ -972,18 +1053,21 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 
 \begin{frame}
     \frametitle{Final remarks}
-    \begin{figure}[ht]\centering
-    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/knot03}}
-    \end{figure}
+    \begin{enumerate}
+        \item Grothendieck on triviality
+        \item A kid's problem
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}
     \frametitle{Grothendieck on triviality}
     Alexander Grothendieck once emphasized the triviality in mathematics in his letter:
-    \newline
-    \begin{quote}
-       The difficulty of bringing new concepts out of the dark.
-    \end{quote}
+    \newline\newline
+    \begin{center}
+        \begin{quote}
+            The difficulty of bringing new concepts out of the dark ...
+        \end{quote}
+    \end{center}
 \end{frame}
 
 \begin{frame}
