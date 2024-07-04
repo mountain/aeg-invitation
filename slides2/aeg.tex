@@ -14,6 +14,7 @@
 \usepackage{tkz-euclide}
 \usepackage{tkz-graph}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \pgfplotsset{compat=1.18}
 
 \usetheme{Pittsburgh}
@@ -653,7 +654,7 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-    \frametitle{Two approaches towards arithmetic expression space}
+    \frametitle{Two approaches towards arithmetic expression space?}
     We have several relevant structures:
     \begin{itemize}
         \item $E(F), (H, a), (Path, Integ)$
@@ -679,9 +680,25 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
+    \frametitle{More examples?}
+    $\mathfrak{E_1}$ is too rigid, can we find a space that is more flexible?
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/e2_grid_cg}}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/t4096}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
     \frametitle{Existence theorems}
-    $\mathfrak{E_1}$ is too rigid, we need other examples.
-    Can we find a space that is more flexible?
     \begin{itemize}
         \item Local metric existence theorem
         \item Proper assignment existence?
@@ -807,6 +824,12 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     Can we find a connection between arithmetic torsion and curvature?
 \end{frame}
 
+\begin{frame}
+    \frametitle{A broken clue?}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{../images/19-curl}
+    \end{center}
+\end{frame}
 
 \begin{frame}
     \frametitle{Analysis}
@@ -819,6 +842,39 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \frametitle{Path integration?}
     We may extends Riemann integral to a path integral.
     What properties should the path integral have? Is the eigenfunction of Laplacian in $\mathfrak{E}_1$ a special case?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Flow equation and Cauchy–Riemann equations?}
+    The flow equation can be rewritten as an equation of differentials
+    \[
+        \frac{da}{ds} = \mu \cos \theta + a \lambda \sin \theta
+    \]
+    \[
+        da = \mu du + a \lambda dv
+    \]
+    \[
+        a_0 + da = \mu du + a_0 (1 + \lambda dv)
+    \]
+    The picture here is that any path escape from a point leads to a different value.
+    This can be also interpreted as a differentiability condition, any path approaching a point should lead to the same
+    value, which is similar to the Cauchy–Riemann equations in complex analysis.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Maximum value principle?}
+    For any $a$, we have a $\theta$ make $\frac{da}{ds}$ positive
+    \[
+        \frac{da}{ds} = \mu \cos \theta + a \lambda \sin \theta
+    \]
+    This means a maximum value principle is satisfied,
+    which is similar to the maximum modulus principle in complex analysis.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Eigenfunction of Laplacian}
+    In $\mathfrak{E_1}$ space, assignment $a$ is eigenfunction of Laplacian with eigenvalue $2 \lambda^2$.
+    When $\lambda = 0$, it is pure additive case, and the curvature is zero also, and $a$ is harmonic.
 \end{frame}
 
 \begin{frame}
@@ -835,6 +891,15 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
     \end{itemize}
     Can we find more examples? Does complex analysis belong to this structure?
     We conjecture that complex analysis is a 1-dimensional additive AEG theory.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Tube structure?}
+    \begin{figure}[ht]\centering
+    \resizebox{0.8\textwidth}{!}{\includegraphics{../images/tube}}
+    \end{figure}
+    Real version and complex version.
+    A polynomial as a fiber across the AEG spaces with different generators.
 \end{frame}
 
 \begin{frame}
@@ -896,7 +961,48 @@ Generally, the evaluation order of the arithmetic expression is not unique thoug
 \end{frame}
 
 \begin{frame}
-Thank you!
+    \frametitle{Space-time complexity?}
+    The trade-off between space and time complexity is common in algorithm design,
+    but the conversion between space and time complexity means they are the same thing from a conceptual perspective.
+    We need study the trace of a computation process.
+    AEG provides a testbed for this study.
+\end{frame}
+
+\section{Final remarks}
+
+\begin{frame}
+    \frametitle{Final remarks}
+    \begin{figure}[ht]\centering
+    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/knot03}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Grothendieck on triviality}
+    Alexander Grothendieck once emphasized the triviality in mathematics in his letter:
+    \newline
+    \begin{quote}
+       The difficulty of bringing new concepts out of the dark.
+    \end{quote}
+\end{frame}
+
+\begin{frame}
+    \frametitle{A kid's problem}
+    Cake-cutting is a classic problem and studied in mathematics, computer science, economics and political science,
+    and it is taught in primary school.
+
+    One day, my kid asked me a question: "Why the more pieces I cut the more unfairness I get, if we use as less cut as possible?"
+    \begin{figure}[ht]\centering
+    \resizebox{0.5\textwidth}{!}{\includegraphics{../images/random-cuts}}
+    \end{figure}
+    We may introduce "area entropy" and "edge entropy" to measure the fairness of a cake-cutting, but what is the connection between
+    the entropy and the number of cuts? What is the relationship between the "area entropy" and "edge entropy"?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Open to the unknown}
+    Open your eyes as a kid, keep curiosity alive and mind open, and you will find the beauty of mathematics everywhere.
+    \newline Thank you!
 \end{frame}
 
 \end{document}
