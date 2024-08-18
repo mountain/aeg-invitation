@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    \draw [lightgray, dashed, line width=0.6pt, ->] (8.0, 0.0) to[out=180,in=0] (0.0, 0.0);
+    \node [anchor=west] at (8.0, 0.0) {$x$};
+    \node [anchor=east] at (0.0, 0.0) {$x + \mu$};
+    \draw [lightgray, dashed, line width=0.6pt, ->] (0.0, 0.0) to[out=270,in=90] (0.0, -4.0);
+    \node [anchor=east] at (0.0, -4.0) {$(x + \mu) e^{\lambda}$};
+
+    \draw [lightgray, dashed, line width=0.6pt, ->] (8.0, 0.0) to[out=270,in=90] (8.0, -4.0);
+    \node [anchor=west] at (8.0, -4.0) {$x e^{\lambda}$};
+    \draw [lightgray, dashed, line width=0.6pt, ->] (8.0, -4.0) to[out=180,in=0] (4.0, -4.0);
+    \node [anchor=south] at (4.0, -4.0) {$x e^{\lambda} + \mu$};
+
+    \draw [red, line width=0.6pt, ->] (4.0, -4.0) to[out=180,in=0] (0.0, -4.0);
+    \node [anchor=south] at (2.0, -4.0) {$\tau$};
+\end{tikzpicture}
+\end{document}
