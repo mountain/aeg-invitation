@@ -33,6 +33,7 @@
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{wasysym}
+\usepackage{hyperref}
 \lstset{
     basicstyle=\itshape,
     xleftmargin=3em,
@@ -316,7 +317,7 @@ a_{\delta} = a_0 + \epsilon (a_0 \lambda \sin \theta + \mu \cos \theta)
 另一种是解释性的途径，它试图通过微积分的工具，直接在几何空间上讨论一个标量场$a$，称为赋值场，这个场满足流方程，可以把一些折线路径解释为离散的算术表达式，
 甚至扩展至一种特殊的加乘积分构造。这两种不同的途径都是我们研究的方法。
 
-\section{算术表达式}
+\section{算术表达式}\label{sec:arithmetic-expression}
 
 从计算机科学的角度来看，算术表达式是一种抽象的递归数据类型，它可以被解析成为一棵树。这棵树的叶子节点是操作数，内部节点是操作符。
 所以也可以说，算术表达式有字串表示和树表示两种形式，常见的形式是字串表示，基于中缀表示法和括号的优先级规则。
@@ -387,7 +388,7 @@ a &\longleftarrow ( a \div a )
 任何一个可线索化表达式都可以通过适当添加加零项或者乘一项来补足成为交错式。因此交错式是可线索化表达式的一个典范形式。
 我们记它为 $\mathbb{A} \left [\mathbb{Q} \right ]$。
 
-\section{离散的自由生成群}
+\section{离散的自由生成群}\label{sec:freegroup}
 
 我们考虑如下一个初始操作数，两个操作子生成的结构
 \begin{itemize}
@@ -420,44 +421,91 @@ x \otimes_\lambda \oplus_\mu \oslash_\lambda \ominus_\mu - x = - \mu(1 - e^{-\la
 \caption{算术扭曲作为几何路径上的差量}\label{fig:torsion}
 \end{figure}
 
-\section{流方程的解}
+\section{流方程的形式解}
+
+流方程刻画了一个双生成元的无穷小生成过程，它不是一个纯代数式的生成方式，而是一个几何式的过程。通过得到的微分方程，我们甚至可以纯形式地求出它的解析解。
+
+从方程开始
+
+$$
+\frac{da}{ds} = \mu \cos \theta + a \lambda \sin \theta
+$$
+
+我们有
+
+$$
+\frac{1}{\lambda \sin \theta} \frac{d(\mu \cos \theta + a \lambda \sin \theta)}{\mu \cos \theta + a \lambda \sin \theta} = ds
+$$
+
+积分并化简得到
+
+$$
+\mu \cos \theta + a \lambda \sin \theta = e^{\lambda s \sin \theta} e^{C \lambda \sin \theta}
+$$
+
+考虑初始条件
+
+$$
+\mu \cos \theta + a_0 \lambda \sin \theta = e^{C \lambda \sin \theta}
+$$
+
+于是有
+
+\begin{equation}
+a = (a_0  + \frac{\mu}{\lambda} \cot \theta) e^{\lambda s \sin \theta} - \frac{\mu}{\lambda} \cot \theta
+\end{equation}
+
+对于给定的 $\theta$、$\mu$和$\lambda$，我们很容易可以验证这个形式解构成一个关于 $s$ 的单参数变换群，也即有：
+\begin{itemize}
+\item 变换合成：对任意的 $s_1$ 和 $s_2$，有 $a(a(a_0, s_1), s_2) = a(a_0, s_1 + s_2)$
+\item 单位变换：$a(a_0, 0) = a_0$
+\item 逆变换：$a(a(a_0, s), -s) = a_0$
+\end{itemize}
 
 \section{两种生成的兼容性}
 
-\section{流方程的变形}
+从流方程的形式解出发，我们可以变形到一个特定形式，来考察赋值 $a$ 沿着 $\frac{\pi}{2}$ 的倍角方向的变化。
 
-和前一节讨论的有理数域上的表达式不同，在那里我们做了准备和铺垫，希望通过完备化来构造出算术表达式的几何空间。这是一种构造性的途径和研究方法。
-本节则有所不同，我们在这里使用微积分的工具，直接在几何空间上讨论一个标量场$a$，称为赋值场，这个场满足流方程，可以证明前一小节讨论的离散路径群结构可以嵌入到这个几何图景里。
-这两种不同的途径都是我们研究的工具。
+\[
+a = (a_0  + \frac{\mu}{\lambda} \cot \theta) e^{\lambda s \sin \theta} - \frac{\mu}{\lambda} \cot \theta
+\]
 
-![页十九](/curiosity/invitation/019.jpeg)
+我们可以把这个式子变形为
 
-我们在最初引入流方程的时候，使用的是局部极坐标系；类似，我们也可以引入对应的局部笛卡尔坐标系；甚至，我们也可以推导出梯度线-等值线坐标系。
-在这些坐标系里，流方程有不同的形式，但是它们都是等价的。这是因为流方程是赋值场 $a$ 的局部性质，它本身不依赖于坐标系的选择。
+\[
+a =  a_0 e^{\lambda s \sin \theta} + \frac{\mu}{\lambda} (e^{\lambda s \sin \theta} - 1) \cot \theta
+\]
 
-![页二十](/curiosity/invitation/020.jpeg)
+应用 Taylor 展开和倍角公式，我们可以得到
 
-这些局部的坐标系可以刻画赋值场 $a$，同样也可以通过第一基本形式来刻画几何空间本身。我们需要指出，
-这些局部刻画需要一个全局的适配条件才能拼接成一个整体的刻画。
+\[
+a = a_0 e^{\lambda s \sin \theta} + \mu s \cos \theta + \frac{\mu}{2\lambda} \sin 2\theta (\frac{\lambda^2s^2}{2!} + \frac{\lambda^3s^3}{3!} \sin \theta + \frac{\lambda^4s^4}{4!} \sin^2 \theta + \cdots)
+\]
 
-形式上，流方程是可以解出来的，不同坐标系下的解会带给我们不同的几何图景。
+重新整理为下式
 
-![页二一](/curiosity/invitation/021.jpeg)
+\begin{equation}
+a = a_0 e^{\lambda s \sin \theta} + \mu s \cos \theta + \frac{\mu}{2\lambda} \Psi(s) \sin 2\theta
+\end{equation}
 
-局部极坐标系下的解，我们通过泰勒展开、变形、引入倍角公式的处理，最终得到了一个公式。
-仔细观察这个公式会发现，它在 $\theta$ 角取值为 $0$、$\frac{\pi}{2}$、$\pi$、$\frac{3\pi}{2}$ 时，分别编码了加减乘除四种运算。
-如此，我们就可以把算术表达式离散生成的群结构作为路径嵌入到这个几何空间里。
+很容易看出，当 $\theta$ 角取 $\frac{\pi}{2}$ 的倍数时, $\Psi(s)$ 不起作用，而是有：
+\begin{itemize}
+\item 当 $\theta = 0$ 时，$a = a_0 + \mu s$，编码了加法作用。
+\item 当 $\theta = \frac{\pi}{2}$ 时，$a = a_0 e^{\lambda s}$，编码了乘法作用。
+\item 当 $\theta = \pi$ 时，$a = a_0 - \mu s$，编码了减法作用。
+\item 当 $\theta = \frac{3\pi}{2}$ 时，$a = a_0 e^{-\lambda s}$，编码了除法作用。
+\end{itemize}
 
-![页二二](/curiosity/invitation/022.jpeg)
+这告诉我们，只要 $a$ 满足流方程，那么 $a$ 就可以容纳\ref{sec:freegroup}节里的自由生成群的生成过程。而流方程本身就是刻画无穷小生成过程的微分方程，
+所以，我们说无穷小生成兼容离散自由生成。
 
-局部梯度线-等值线坐标系下的流方程也是可解的。对于以 $0$ 值为起点的情形，我们发现此时的解和双曲空间中圆的周长公式形式是一样的，只差一个比例系数。
-这给我们带来了一种扩散圆的几何图景，扩散圆的周长乘以某个比值就是赋值场。
-直观上，当有多个零点或者零点构成零线时，我们使用惠更斯原理，用这些扩散圆的叠加，也就是波前来刻画赋值场。
-目前这个几何图景还只是一种观察，尚未得到严格的证明。
-
-\section{估值函数}
+本节最后，让我们考察一下在 \ref{sec:arithmetic-expression} 小节定义的离散表达式的估值函数 $\nu$。
+在离散的情况下，$\nu$ 是一个从表达式到值的映射，它是一个函数。而在流的观点下，可线索化表达式等价于路径，而 $\nu$ 就是一个函数，
+它把路径映射为路径终点的赋值 $a$。
 
 \section{算术表达式空间}
+
+
 
 \newpage
 
