@@ -1,0 +1,23 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{lindenmayersystems}
+
+\begin{document}
+    \begin{tikzpicture}
+        \pgfdeclarelindenmayersystem{parallelogram grid}{%
+            \symbol{F}{\pgflsystemdrawforward}%
+            \rule{F -> F+F--F+F}%
+        }
+
+        \path[draw=black,
+            l-system={
+                parallelogram grid,
+                step=-1cm,
+                angle=-90,
+                axiom=F,
+                order=4
+            }
+        ] lindenmayer system -- cycle;
+
+    \end{tikzpicture}
+\end{document}
