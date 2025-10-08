@@ -237,14 +237,14 @@ A well-known example is word2vec:
 
 \begin{frame}
     \frametitle{The $\mathfrak{E}_1$ Space: A Perfect Example}
-    In the $\mathfrak{E}_1$ space, all three aspects converge:
+    In the $\mathfrak{E}_1$ space, computation, geometry, and analysis coincide:
 
     \begin{block}{Computational Aspect}
     The assignment $a = -x/y$ encodes arithmetic expressions as a geometric flow.
     \end{block}
 
     \begin{block}{Geometric Aspect}
-    The space has a hyperbolic metric $ds^2 = \frac{1}{y^2}(dx^2 + dy^2)$.
+    The space has a hyperbolic metric $ds^2 = \frac{1}{y^2}(\frac{dx^2}{\mu^2} + \frac{dy^2}{\lambda^2})$.
     \end{block}
 
     \begin{block}{Analytic Aspect}
@@ -254,16 +254,16 @@ A well-known example is word2vec:
     \]
     \end{block}
 
-    This triad suggests that AEG may serve as a Rosetta Stone for translating among these domains.
+    This triad suggests that AEG can serve as a Rosetta Stone for translating among these domains.
 \end{frame}
 
 \begin{frame}
     \frametitle{Encoding thread-like expressions as paths}
 
     \begin{itemize}
-        \item Black line: $1 \times 8 - 5 = 3$
-        \item Purple line: $\left(1 - \frac{5}{8}\right) \times 8 = 3$
-        \item Orange line: a specific integral curve
+        \item Black path: $1 \times 8 - 5 = 3$
+        \item Purple path: $\left(1 - \frac{5}{8}\right) \times 8 = 3$
+        \item Orange path: an example integral curve
     \end{itemize}
 
     \begin{figure}[ht]
@@ -403,19 +403,19 @@ A well-known example is word2vec:
     \frametitle{Arithmetic torsion at scale}
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            We increase the step size:
+            As the step size increases:
 
             For a single step:
             \begin{equation}
             (x + 1) \times 2 - (x \times 2 + 1) = 1
             \end{equation}
 
-            With two steps:
+            For two steps:
             \begin{equation}
             (x + 2) \times 4 - (x \times 4 + 2) = 6
             \end{equation}
 
-            With three steps, the pattern continues:
+            For three steps, the pattern continues:
             \begin{equation}
             (x + 3) \times 8 - (x \times 8 + 3) = 21
             \end{equation}
@@ -487,7 +487,17 @@ A well-known example is word2vec:
         \item Time complexity: number of operations (steps)
         \item Space complexity: memory usage (intermediate results)
     \end{itemize}
-    Does this trade-off imply a common source of complexity? Which notion of complexity does geometric volume quantify?
+    This trade-off suggests a common source of complexity. Which notion of complexity does geometric volume quantify?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion: richness from the unified perspective}
+    We have shown that:
+    \begin{itemize}
+        \item Arithmetic expressions can be encoded as geometric flows in the hyperbolic model $\mathfrak{E}_1$; the assignment $a=-x/y$ links computation, geometry, and analysis via the flow equation.
+        \item Non-commutativity manifests as arithmetic torsion that scales with step size and organizes paths; analytic structure appears through Laplacian eigenfunctions.
+        \item Algebraic invariants such as Alexander and cyclotomic polynomials govern path closure and global torsion, revealing a deep interface between topology and arithmetic.
+    \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -506,60 +516,146 @@ A well-known example is word2vec:
 \end{frame}
 
 \begin{frame}
-    \frametitle{Beyond Newton and Leibniz}
-    Traditional calculus is fundamentally additive:
-    \[
-        \int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x
-    \]
-    
-    But what about mixed operations? We propose:
-    
-    \begin{block}{Neo-Integral}
-    \[
-        \mathcal{I}_\gamma[f] = \lim_{n \to \infty} \left( \prod_{i \in M} e^{f(s_i)\Delta s_i} \right) \left( \sum_{j \in A} g(s_j)\Delta s_j \right)
-    \]
-    where the path $\gamma$ determines the mixing pattern of multiplicative (M) and additive (A) steps.
-    \end{block}
-    
-    This neo-calculus would:
+    \frametitle{How to describe a change over time?}
+    \begin{columns}
+        \begin{column}{0.7\textwidth}
+            Two methods to describe a small change over time:
+            \begin{itemize}
+                \item by quantity: adding a small near-zero amount of quantity
+                \item by ratio: multiplying a near-unit ratio
+            \end{itemize}
+            Traditional calculus is based on the first method, Riemann integral is additive.
+            We can use functions $\exp$ and $\log$ to convert between the two methods.
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{1.0\textwidth}{!}{\includegraphics{../images/fluxions}}
+            \caption{Method of Fluxions}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Product integration}
+    \begin{columns}
+            \begin{column}{0.3\textwidth}
+                \begin{figure}[ht]\centering
+                \resizebox{1.0\textwidth}{!}{\includegraphics{../images/vito_volterra}}
+                \caption{Vito Volterra}
+                \end{figure}
+            \end{column}
+            \begin{column}{0.7\textwidth}
+            Matrix-valued non-commutative derivative and integration, left and right
+            \begin{itemize}
+                \item $\frac{d}{dx} A(x) = \lim_{\Delta x \to 0} \frac{A(x + \Delta x) A^{-1}(x) - I}{\Delta x}$
+                \item $A(x) \frac{d}{dx} = \lim_{\Delta x \to 0} \frac{A^{-1}(x) A(x + \Delta x) - I}{\Delta x}$
+                \item $\prod_{a}^{b} (I + A(x) dx) = \lim_{\nu(P) \to 0} \prod_{i=m}^{1}(I + A(\xi_i))$
+                \item $(I + A(x) dx) \prod_{a}^{b}  = \lim_{\nu(P) \to 0} \prod_{i=1}^{m}(I + A(\xi_i))$
+            \end{itemize}
+            An interesting formula connect product integration and normal additive integration
+            $\prod_a^b (I + A(x) dx) = I + \int_a^b A(x) dx + \int_a^b \int_a^x A(x) A(y) dy dx + \cdots$
+            \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{How about mixing up additive and multiplicative steps?}
+    The additive calculus provide a closed set over polynomials over differential and integral operators.
     \begin{itemize}
-        \item Unify discrete and continuous operations
-        \item Naturally handle non-commutative processes
-        \item Provide new tools for analyzing complex systems
+        \item $\frac{d}{dx} p(x) = q(x)$
+        \item $\int p(x) dx = q(x) + C$
+    \end{itemize}
+    This is the fundamental source of power series and approximation theory.
+    \newline\newline
+    Problem: How about mixing additive and multiplicative steps up in one process?
+    \newline\newline
+    Direction:
+    \begin{itemize}
+        \item We need handle functions other than constants in arithmetic expressions.
+        \item We need expand polynomials to another closed set over differential and integral operators.
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Flow Derivatives and Path Integrals}
-    In this neo-calculus, we have new types of derivatives and integrals:
-    
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{Flow Derivative}
-            \[
-                D_\theta f = \cos\theta \frac{\partial f}{\partial u} + \sin\theta \cdot f \frac{\partial \log f}{\partial v}
-            \]
-            
-            This combines:
-            \begin{itemize}
-                \item Additive change (partial derivative)
-                \item Multiplicative change (logarithmic derivative)
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{Path Integral}
-            \[
-                \int_\gamma \omega = \int_0^L f(s) \cdot \text{mix}(\theta(s)) \, ds
-            \]
-            
-            Where $\text{mix}(\theta)$ encodes the operation:
-            \begin{itemize}
-                \item $\theta = 0$: pure addition
-                \item $\theta = \pi/2$: pure multiplication
-                \item Other angles: mixed operations
-            \end{itemize}
-        \end{column}
-    \end{columns}
+    \frametitle{A contact structure}
+    Consider $(u,v,a)\in\mathbb{R}^3$ with constants $\mu,\lambda$.
+    \[
+      \omega := \mu\,du + \lambda a\,dv,\qquad \alpha := da - \omega
+    \]
+    Key properties:
+    \begin{itemize}
+      \item Contact:
+      \[
+        d\omega=\lambda\,da\wedge dv,\quad d\alpha=-d\omega,\quad
+        \alpha\wedge d\alpha=\mu\lambda\,du\wedge da\wedge dv\neq 0
+      \]
+      so $\alpha$ is a contact form when $\mu\lambda\neq 0$.
+      \item Reeb field and distribution:
+      \[
+        R=-(1/\mu)\,\partial_u,\qquad \mathcal{H}:=\ker\alpha
+      \]
+      \item Horizontal lifts (basis of $\mathcal{H}$):
+      \[
+        D_u:=\partial_u+\mu\,\partial_a,\qquad
+        D_v:=\partial_v+\lambda a\,\partial_a,\qquad \alpha(D_u)=\alpha(D_v)=0
+      \]
+      \item Normal units: with $\tilde u=\mu u,\ \tilde v=\lambda v$,
+      \[
+        \alpha=da-d\tilde u-a\,d\tilde v
+      \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Calculus over the contact structure: I}
+    The expression differential $\delta$ is defined by
+    \[
+      \delta a=\omega,\qquad \delta u=du,\qquad \delta v=dv,
+    \]
+    and for any $F(u,v,a)$
+    \[
+      \delta F = dF - (\partial_a F)\,\alpha
+      = (D_uF)\,du + (D_vF)\,dv,
+    \]
+    where
+    \[
+      D_uF=F_u+\mu F_a,\qquad D_vF=F_v+\lambda a F_a,\qquad
+      D_\theta=\cos\theta\,D_u+\sin\theta\,D_v.
+    \]
+    Chain rules:
+    \[
+      \delta\Phi(a)=\Phi'(a)\,\omega,\qquad
+      \delta F(E_1,E_2)=\partial_1F\,\delta E_1+\partial_2F\,\delta E_2.
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Calculus over the contact structure: II}
+    Curvature and non-commutativity:
+    \[
+      [D_u,D_v]=\mu\lambda\,\partial_a,\qquad
+      \delta^2F=\mu\lambda(\partial_a F)\,du\wedge dv,\qquad
+      \delta^2 a=\mu\lambda\,du\wedge dv.
+    \]
+    Compatibility and circulation:
+    \[
+      (d\omega)^*\big|_{\alpha=0}=\mu\lambda\,du\wedge dv,\qquad
+      \oint_{\partial\Sigma}\omega=\iint_\Sigma d\omega=\mu\lambda\iint_\Sigma du\wedge dv.
+    \]
+    Quick rules:
+    \[
+      \delta(a^n)=n a^{n-1}\omega,\quad
+      \delta(\ln a)=\tfrac{\omega}{a},\quad
+      \delta(e^a)=e^a\omega,\quad
+      \delta(\sin a)=\cos a\,\omega,\quad
+      \delta(\cos a)=-\sin a\,\omega.
+    \]
+    Rectification and flow:
+    \[
+      y=\arcsin\!\left(\tfrac{\lambda a}{\mu}\right),\quad \|\nabla y\|=\lambda,\quad
+      \frac{da}{ds}=D_\theta a=\mu\cos\theta+\lambda a\sin\theta.
+    \]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
