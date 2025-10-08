@@ -59,7 +59,9 @@ Over the past ten years of exploration, I’ve collected a few small, colorful s
 \newline\newline
 Each one sparked my curiosity, and together they have carried me to where I am today.
 \newline\newline
-The stones are not answers, but invitations — to keep exploring, to keep asking.
+The stones are not answers, but invitations — to keep exploring, to keep asking, and to enjoy the process.
+\newline\newline
+Asking the right questions is often more important than finding the right answers, especially in the AI era.
         \end{column}
         \begin{column}{0.45\textwidth}
             \begin{figure}[ht]\centering
@@ -519,13 +521,13 @@ A well-known example is word2vec:
     \frametitle{How to describe a change over time?}
     \begin{columns}
         \begin{column}{0.7\textwidth}
-            Two methods to describe a small change over time:
+            Two complementary ways to describe a small change over time:
             \begin{itemize}
-                \item by quantity: adding a small near-zero amount of quantity
-                \item by ratio: multiplying a near-unit ratio
+                \item by quantity: add a near-zero amount
+                \item by ratio: multiply by a near-unit factor
             \end{itemize}
-            Traditional calculus is based on the first method, Riemann integral is additive.
-            We can use functions $\exp$ and $\log$ to convert between the two methods.
+            Traditional calculus is based on the first method; the Riemann integral is additive.
+            The functions $\exp$ and $\log$ convert between these two viewpoints.
         \end{column}
         \begin{column}{0.3\textwidth}
             \begin{figure}[ht]\centering
@@ -546,34 +548,37 @@ A well-known example is word2vec:
                 \end{figure}
             \end{column}
             \begin{column}{0.7\textwidth}
-            Matrix-valued non-commutative derivative and integration, left and right
+            Matrix-valued non-commutative differentiation and integration, left and right
             \begin{itemize}
                 \item $\frac{d}{dx} A(x) = \lim_{\Delta x \to 0} \frac{A(x + \Delta x) A^{-1}(x) - I}{\Delta x}$
                 \item $A(x) \frac{d}{dx} = \lim_{\Delta x \to 0} \frac{A^{-1}(x) A(x + \Delta x) - I}{\Delta x}$
                 \item $\prod_{a}^{b} (I + A(x) dx) = \lim_{\nu(P) \to 0} \prod_{i=m}^{1}(I + A(\xi_i))$
                 \item $(I + A(x) dx) \prod_{a}^{b}  = \lim_{\nu(P) \to 0} \prod_{i=1}^{m}(I + A(\xi_i))$
             \end{itemize}
-            An interesting formula connect product integration and normal additive integration
-            $\prod_a^b (I + A(x) dx) = I + \int_a^b A(x) dx + \int_a^b \int_a^x A(x) A(y) dy dx + \cdots$
+            An identity connects product integration with standard additive integration:
+            \[
+              \prod_a^b (I + A(x)\,dx)
+              = I + \int_a^b A(x)\,dx + \int_a^b \int_a^x A(x)A(y)\,dy\,dx + \cdots
+            \]
             \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}
     \frametitle{How about mixing up additive and multiplicative steps?}
-    The additive calculus provide a closed set over polynomials over differential and integral operators.
+    Additive calculus provides a closed algebra of polynomials under differential and integral operators.
     \begin{itemize}
         \item $\frac{d}{dx} p(x) = q(x)$
-        \item $\int p(x) dx = q(x) + C$
+        \item $\int p(x)\,dx = q(x) + C$
     \end{itemize}
-    This is the fundamental source of power series, Laurent series and approximation theory.
+    This underlies power series, Laurent series, and approximation theory.
     \newline\newline
-    Problem: How about mixing additive and multiplicative steps up in one process?
+    Problem: How do we mix additive and multiplicative steps in a single process?
     \newline\newline
     Directions:
     \begin{itemize}
-        \item We need handle functions other than constants in arithmetic expressions.
-        \item We need expand polynomials to another closed set over differential and integral operators.
+        \item We need to handle functions beyond constants in arithmetic expressions.
+        \item We need to expand polynomials into another closed set under differential and integral operators.
     \end{itemize}
 \end{frame}
 
@@ -600,7 +605,7 @@ A well-known example is word2vec:
         D_u:=\partial_u+\mu\,\partial_a,\qquad
         D_v:=\partial_v+\lambda a\,\partial_a,\qquad \alpha(D_u)=\alpha(D_v)=0
       \]
-      \item Normal units: with $\tilde u=\mu u,\ \tilde v=\lambda v$,
+      \item Natural units: with $\tilde u=\mu u,\ \tilde v=\lambda v$,
       \[
         \alpha=da-d\tilde u-a\,d\tilde v
       \]
@@ -660,7 +665,7 @@ A well-known example is word2vec:
 
 \begin{frame}
   \frametitle{Extending polynomials: the affine–Appell basis}
-  Normal units: $\tilde u=\mu u,\ \tilde v=\lambda v$. Define scaled powers
+  Natural units: $\tilde u=\mu u,\ \tilde v=\lambda v$. Define scaled powers
   \[
     B_n(a,v):=e^{-n\tilde v}a^n\quad(n\in\mathbb{N}).
   \]
@@ -686,7 +691,7 @@ A well-known example is word2vec:
     D_u^{-1}\!\big(P(v,e^{\tilde v})\,B_n\big)=\frac{e^{\tilde v}P(v,e^{\tilde v})}{\mu(n+1)}\,B_{n+1}.
   \]
   In general, define $Q^{(0)}_n=\dfrac{e^{\tilde v}}{\mu(n+1)}P_n$ and set $G^{(0)}=\sum_n Q^{(0)}_nB_{n+1}$.
-  Then $F-\!D_uG^{(0)}=-\sum_n(\partial_uQ^{(0)}_n)B_{n+1}$. Repeat finitely many times.
+  Then $F-\!D_uG^{(0)}=-\sum_n(\partial_uQ^{(0)}_n)B_{n+1}$. Repeat for finitely many steps.
   \vspace{0.6em}
 
   \textbf{Example.} For $F=a^3e^{\lambda v}=e^{4\tilde v}B_3$,
@@ -695,7 +700,6 @@ A well-known example is word2vec:
     D_u\!\left(\frac{e^{\lambda v}}{4\mu}a^4\right)=a^3e^{\lambda v}.
   \]
 \end{frame}
-
 
 \begin{frame}
     \frametitle{Conclusion: a new calculus for mixed operations}
@@ -708,7 +712,6 @@ A well-known example is word2vec:
         \item An affine–Appell basis $B_n(a,v)=e^{-n\tilde v}a^n$ is closed under $D_u,D_v$, enabling explicit differentiation/integration and constructive antiderivatives for mixed expressions.
     \end{itemize}
 \end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Possibility 4: A New Atlas for Complex Analysis?
@@ -726,6 +729,190 @@ A well-known example is word2vec:
     \end{center}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Why are complex numbers necessary here?}
+    This stems from the fact that multiplication by $-1$ is involutive, i.e., $(-1)^2=1$.
+    We therefore need an infinitesimal generator that connects $-1$ and $1$ continuously.
+
+    \vspace{0.2cm}
+
+    \begin{figure}[ht]\centering
+    \begin{tikzpicture}[scale=1.1]
+      % axes
+      \draw[->] (-1.6,0) -- (1.6,0) node[right] {$\Re$};
+      \draw[->] (0,-1.6) -- (0,1.6) node[above] {$\Im$};
+      % unit circle
+      \draw[thick, blue] (0,0) circle (1);
+      % points
+      \node[fill,circle,inner sep=1.2pt, label={below right:$1$}] (one) at (1,0) {};
+      \node[fill,circle,inner sep=1.2pt, label={below left:$-1$}] (minusone) at (-1,0) {};
+      \node[fill,circle,inner sep=1.2pt, label={above left:$i$}] (ii) at (0,1) {};
+      \node[fill,circle,inner sep=1.2pt, label={below right:$-i$}] (minusi) at (0,-1) {};
+      % arcs: multiplication by i (90-degree rotations)
+      \draw[->, red, thick] (1,0) arc[start angle=0, end angle=90, radius=1];
+      \draw[->, red, thick] (0,1) arc[start angle=90, end angle=180, radius=1];
+      \draw[->, red, thick, dashed] (-1,0) arc[start angle=180, end angle=270, radius=1];
+      \draw[->, red, thick, dashed] (0,-1) arc[start angle=270, end angle=360, radius=1];
+      % labels on arcs
+      \node[red] at (0.55,0.55) {$\times i$};
+      \node[red] at (-0.55,0.55) {$\times i$};
+      \node[red] at (-0.55,-0.55) {$\times i$};
+      \node[red] at (0.55,-0.55) {$\times i$};
+    \end{tikzpicture}
+    \caption{$i$ as a generator: multiplication by $i$ rotates by $90^\circ$, so $1 \xrightarrow{\times i} i \xrightarrow{\times i} -1$.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Setup (over $\mathbb C$): contact structure and affine--Appell chart}
+  \textbf{Complexification rule.} Coordinates $(u,v)\in\mathbb R^2$; values and parameters
+  $a,\mu,\lambda\in\mathbb C$. All operators act $\mathbb C$-linearly.
+
+  \vspace{0.4em}
+  \textbf{Contact data and horizontal fields}
+  \[
+    \omega:=\mu\,du+\lambda a\,dv,\qquad
+    \alpha:=da-\omega,
+  \]
+  \[
+    D_u:=\partial_u+\mu\,\partial_a,\qquad
+    D_v:=\partial_v+\lambda a\,\partial_a,\qquad
+    \delta F=(D_uF)\,du+(D_vF)\,dv.
+  \]
+  \vspace{0.4em}
+
+  \textbf{Natural units and affine--Appell coordinate}
+  \[
+    \tilde u:=\mu u,\quad \tilde v:=\lambda v,\qquad
+    s:=a\,e^{-\tilde v}\ \Rightarrow\ D_v s=0,\ D_u s=\mu\,e^{-\tilde v}.
+  \]
+  We write $B_n:=s^n\ (n\in\mathbb N)$ and use an EL-closed coefficient ring
+  $\mathcal R_{\mathrm{EL}}$ generated by $u,v,e^{\pm\tilde v}$ and closed under
+  $+,\times,\partial_u,\partial_v,\exp,\log$ (where defined).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Definition and intuition: AEG--Cauchy--Riemann over $\mathbb C$}
+  \textbf{Arithmetic-holomorphic (over $\mathbb C$).} For $h=f+ig$ with $f,g:\ (u,v,a)\mapsto\mathbb R$,
+  define
+  \[
+    \bar{D}:=\tfrac12\,(D_u+iD_v),\qquad \text{AEG-holomorphic} \iff \bar{D}h=0.
+  \]
+  Equivalently, the \textbf{AEG--CR equations}
+  \[
+    D_u f=D_v g,\qquad D_v f=-D_u g. \tag{16}
+  \]
+
+  \textbf{Geometric consequences.}
+  \begin{itemize}
+    \item \emph{Conformality and equal norms}:
+      $(D_uf,D_ug)\perp(D_vf,D_vg)$ and
+      $(D_uf)^2+(D_ug)^2=(D_vf)^2+(D_vg)^2$.
+    \item \emph{Classical limit}: if $f,g$ are independent of $a$, then
+      $D_u=\partial_u,\ D_v=\partial_v$, yielding the usual CR equations on $(u,v)$.
+    \item \emph{Rigidity}: if $f=f(a)$ and $g=g(a)$, the only solutions are constants.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{AEG--Weierstrass expansion in the affine--Appell chart}
+  \textbf{Theorem (local expansion and uniqueness).}
+  Let $h=f+ig$ be $C^1$ on a neighborhood and satisfy $\bar{D}h=0$.
+  Then there exist unique coefficients $A_n(u,v)\in\mathcal R_{\mathrm{EL}}$ (real-analytic in $(u,v)$)
+  such that
+  \[
+    h(u,v,a)=\sum_{n\ge0} A_n(u,v)\,s^n,\qquad s=a\,e^{-\tilde v}.
+  \]
+  The coefficients obey the triangular recursion
+  \[
+    \frac{\mu}{2}\,e^{-\tilde v}\,(m+1)\,A_{m+1}(u,v)+\partial_{\bar\zeta}A_m(u,v)=0,
+    \quad \partial_{\bar\zeta}:=\tfrac12(\partial_u+i\partial_v).
+  \]
+  Conversely, any convergent series with this recursion solves $\bar{D}h=0$.
+
+  \textbf{Meromorphic extension.} Allowing a finite principal part
+  $h=\sum_{n\ge N}A_n s^n$ ($N\in\mathbb Z$) yields AEG–meromorphic functions
+  (poles at $s=0$).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Symbolic calculus and closure (computable rules)}
+  For $F=\sum_{n\ge0}A_n s^n$:
+  \[
+    D_u F=\sum (\partial_u A_n)\,s^n+\mu e^{-\tilde v}\sum_{n\ge1} nA_n\,s^{n-1},\qquad
+    D_v F=\sum (\partial_v A_n)\,s^n.
+  \]
+  \textbf{Indefinite integration along $u$.} Find $G=\sum B_n s^n$ with $D_uG=F$:
+  \[
+    B_0\ \text{free},\qquad
+    B_{k+1}=\frac{A_k-\partial_u B_k}{\mu e^{-\tilde v}(k+1)}\quad(k\ge0).
+  \]
+
+  \textbf{Algebraic closure.}
+  \begin{itemize}
+    \item Closed under addition and the “AEG complex product”
+      $(f,g)\odot(\tilde f,\tilde g)=(f\tilde f-g\tilde g,\ f\tilde g+\tilde f g)$.
+    \item Composition with a classical holomorphic function of $\zeta=u+iv$ preserves AEG-holomorphicity.
+    \item Laurent series in $s$ implement the AEG–meromorphic class (residues at $s=0$).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conformality, curvature density, and fiberwise complex analysis}
+  Write $F=(f,g)$ and $|F'|^2:=(D_uf)^2+(D_ug)^2=(D_vf)^2+(D_vg)^2$. Then
+  \[
+    d\omega=\frac{\mu\lambda}{|F'|^2}\,df\wedge dg. \tag{17}
+  \]
+  The area density rescales by the Jacobian $|F'|^{-2}$, while the total integral
+  $\int d\omega$ is invariant (expression-conformal coordinates).
+
+  \vspace{0.5em}
+  \textbf{Fiberwise complex analysis in $s$.}
+  Fix $(u,v)$; then $s\in\mathbb C$ and $h(\,\cdot\,)=\sum A_n s^n$ is holomorphic in $s$.
+  Hence the classical Cauchy machinery applies fiberwise:
+  \[
+    h(s_0)=\frac{1}{2\pi i}\oint_{\gamma}\frac{h(s)}{s-s_0}\,ds,\qquad
+    \oint_{\gamma} h(s)\,ds=2\pi i\cdot A_{-1}(u,v),
+  \]
+  for any loop $\gamma$ encircling $s_0$ (or $0$ for the residue statement).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Constructors and examples over $\mathbb C$}
+  \textbf{Constructor (seed $\Rightarrow$ AEG-holomorphic).}
+  Pick any real-analytic seed $A_0(u,v)$; define recursively
+  \[
+    A_{m+1}(u,v)=-\,\frac{2\,e^{\tilde v}}{\mu\,(m+1)}\,\partial_{\bar\zeta}A_m(u,v),
+    \qquad m\ge0,
+  \]
+  and set $h=\sum_{n\ge0}A_n s^n$ with $s=a\,e^{-\tilde v}$. Then $\bar{D}h=0$.
+  If $A_0$ is classical holomorphic in $\zeta$, all higher $A_{n\ge1}$ vanish (classical limit).
+
+  \vspace{0.5em}
+  \textbf{Explicit nontrivial example.}
+  Take $A_0(\zeta,\bar\zeta)=\bar\zeta$; then
+  \[
+    A_1=-\tfrac{2}{\mu}e^{\tilde v},\quad
+    A_2=\tfrac{i\lambda}{\mu^2}e^{2\tilde v},\quad
+    A_3=\tfrac{2\lambda^2}{3\mu^3}e^{3\tilde v},\ \ldots
+  \]
+  so
+  \[
+    h(u,v,a)=\bar\zeta-\frac{2}{\mu}\,a+\frac{i\lambda}{\mu^2}\,a^2+\frac{2\lambda^2}{3\mu^3}\,a^3+\cdots
+  \]
+  is AEG-holomorphic (convergent in a neighborhood controlled by $|a|$ and the majorant of $A_0$).
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion: A new context for holomorphic and analytic functions}
+    We have shown that:
+    \begin{itemize}
+        \item AEG–Cauchy–Riemann: $\bar D=\tfrac12(D_u+iD_v)$, with $\bar D h=0$ defining arithmetic holomorphicity; conformality and the classical limit are recovered, while rigidity appears for functions depending only on $a$.
+        \item AEG–Weierstrass expansion: any local AEG–holomorphic $h$ admits $h=\sum_{n\ge0}A_n(u,v)\,s^n$ with triangular recursion; Laurent series in $s$ yield meromorphic extensions.
+        \item Computation rules: explicit formulas for $D_u, D_v$ on series and a constructive scheme for indefinite integration along $u$; closure under the AEG complex product and composition with classical holomorphic maps in $\zeta=u+iv$.
+        \item Geometry and analysis align: $d\omega=\frac{\mu\lambda}{|F'|^2}df\wedge dg$ encodes conformal area density; fiberwise in $s$, classical Cauchy integral and residue calculus apply.
+    \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Possibility 5: A Key to the Non-linear Maze?
@@ -737,11 +924,123 @@ A well-known example is word2vec:
     \frametitle{Obsidian: The black stone of depth}
     \begin{center}
         \Large
-        \textbf{A Key to the Non-linear Maze?}
+        \textbf{A Key to the Nonlinear Maze?}
         \newline\newline
-        \emph{Can AEG help us navigate the complexities of non-linear systems?}
+        \emph{Can AEG help us navigate the complexities of nonlinear systems?}
     \end{center}
 \end{frame}
+
+\begin{frame}
+    \frametitle{Why is this possible?}
+    \begin{itemize}
+        \item The multiplicative dimension of AEG inherently encodes nonlinearity.
+        \item The non-commutativity of operations is native to the AEG framework.
+        \item A spatiotemporal view of complexity clarifies slow and fast variables in a synergetics setting.
+    \end{itemize}
+    In what follows, we show that AEG's Accumulative Commutative Space (ACS) functions as a minimalist RG flow.
+\end{frame}
+
+\begin{frame}
+    \frametitle{ACS and RG: commutative coordinates and scale}
+    \begin{itemize}
+        \item Accumulative Commutative Space (ACS) assigns to any arithmetic path $\gamma$ the coordinates
+        \[
+            A_\gamma = \sum_k \mu_k,\qquad M_\gamma = \sum_k \lambda_k,
+        \]
+        where $\mu_k$ (additive) and $\lambda_k$ (log-multiplicative) are the operation parameters along $\gamma$.
+        \item Interpretation:
+        \begin{itemize}
+            \item $A$ captures the \emph{net additive load} accumulated by the computation.
+            \item $M$ encodes the \emph{evolutionary scale} (log-scale) accumulated by multiplicative steps.
+        \end{itemize}
+        \item Minimal RG perspective: varying $M$ probes effective dynamics (driven by addition and local flows) at different scales. ACS provides a commutative plane to compare paths across scales.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{AEG flow as a beta-function analog}
+    \begin{itemize}
+        \item Core flow equation for the assignment $a$ along direction $\theta$:
+        \[
+            \frac{da}{ds} = \mu \cos\theta + \lambda a \sin\theta,
+        \]
+        and a coordinate-independent magnitude
+        \[
+            \|\nabla a\| = \sqrt{\mu^2 + a^2\lambda^2}.
+        \]
+        \item RG analogy:
+        \begin{itemize}
+            \item The $\mu$ term contributes a scale-independent drive; the $\lambda a$ term contributes a \emph{scale-dependent} drive.
+            \item Changing $M$ (accumulated $\lambda$) alters the relative influence of the multiplicative term, akin to scale-dependent couplings in RG.
+        \end{itemize}
+        \item Dual timescales: addition $\Rightarrow$ dynamical time; multiplication $\Rightarrow$ evolutionary time/scale. ACS tracks evolutionary time directly via $M$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Arithmetic torsion: scale-weighted invariant in ACS}
+    \begin{itemize}
+        \item Global arithmetic torsion for a surface $\Sigma_\gamma$ bounded by path $\gamma$:
+        \[
+            \tau(\gamma) = \iint_{\Sigma_\gamma} e^{M}\, dA \wedge dM.
+        \]
+        \item The factor $e^M$ \emph{weights} contributions by scale, embedding RG-like reweighting directly into the geometric invariant.
+        \item Implications:
+        \begin{itemize}
+            \item Fixed points and phases leave characteristic signatures in ACS: e.g., $M\rightarrow -\infty$ (vanishing scale), $M=0$ (unit scale).
+            \item Comparing paths at different scales becomes a surface integral in $(A,M)$ with explicit scale dependence.
+        \end{itemize}
+        \item This yields a minimalist renormalization lens: effective additive dynamics at evolutionary time $M$ are observed via ACS projections and torsion.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Example I: Percolation RG ($R(p) = 3p^2 - 2p^3$)}
+    \begin{itemize}
+        \item Polynomial form $R(p)=Yp^N+Xp^{N-1}$ with $(X,Y,N)=(3,-2,3)$.
+        \item ACS coordinates (canonical AEG path):
+        \[
+            A_R = X+Y = 1,\qquad M_R(p) = (N-1)\ln p = 2\ln p.
+        \]
+        \item Fixed points in ACS:
+        \[
+            p^*=0:\ (A=1,\ M\to -\infty),\quad
+            p^*=\tfrac12:\ (A=1,\ M=-2\ln 2),
+        \]
+        \[
+            p^*=1:\ (A=1,\ M=0).
+        \]
+        \item A torsion instance (path-dependent) $\mathcal{T}_R(p) = -\ln p\,(8p^{-1}+3)$ illustrates finite, nonzero torsion at the critical point and vanishing torsion at $p=1$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Example II: Logistic map ($R(x)=rx(1-x)$, $r=3.2$)}
+    \begin{itemize}
+        \item $R(x)=(-r)x^2+(r)x$ with $N=2$, coefficients $(c_2,c_1,c_0)=(-r,r,0)$.
+        \item ACS coordinates (Horner path):
+        \[
+            A_R(r)=r,\qquad M_R(x)=2\ln x.
+        \]
+        \item Stable 2-cycle at $r=3.2$: $x_a\approx 0.513045$, $x_b\approx 0.799455$.
+        \[
+            M_R(x_a)\approx -1.3348,\quad M_R(x_b)\approx -0.4476.
+        \]
+        \item Second iterate $R^{(2)}$: $A_{R^{(2)}}=r^3=32.768$, $M_{R^{(2)}}(x)=4\ln x$. The points $x_a,x_b$ are fixed points of $R^{(2)}$, reflecting a deeper scale $M$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Takeaways: ACS as a minimalist RG flow}
+    \begin{itemize}
+        \item ACS provides $(A,M)$ coordinates that separate dynamical content (addition) from evolutionary scale (multiplication).
+        \item The AEG flow encodes scale dependence directly via $\lambda a$, with $M$ acting as evolutionary time; varying $M$ reveals effective behavior at different scales.
+        \item Arithmetic torsion integrates scale ($e^M$) into a geometric invariant, yielding phase-sensitive signatures and principled path comparisons.
+        \item Across examples (percolation, logistic), fixed points and cycles appear as specific loci in ACS; $M$ quantifies scale while $A$ captures net additive load.
+    \end{itemize}
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Final Thoughts
@@ -749,5 +1048,33 @@ A well-known example is word2vec:
 
 \section{Final Thoughts}
 
+\begin{frame}
+    \frametitle{Final Thoughts}
+    We've journeyed through five possibilities, each a "small, colorful stone" representing a different facet of Arithmetic Expression Geometry.
+    \begin{itemize}
+        \item \textbf{Ochre:} Non-commutativity implies exponential complexity, geometrically realized by the volume of hyperbolic space.
+        \item \textbf{Lapis:} A unified framework where computation, geometry, and analysis converge, linking expressions to geometric flows and topological invariants.
+        \item \textbf{Malachite:} A neo-calculus on a contact structure ($\alpha = da - \omega$) for mixed additive and multiplicative dynamics.
+        \item \textbf{Quartz:} A generalization of complex analysis to an "arithmetic-holomorphic" framework where $\bar{D}h=0$.
+        \item \textbf{Obsidian:} A minimalist, RG-like flow via Accumulative Commutative Space (ACS) to analyze scale in non-linear systems.
+    \end{itemize}
+
+    These five stones suggest that the geometry of arithmetic offers a new language, unifying our understanding of complexity, analysis, and dynamics.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Acknowledgments}
+    We thank
+    \begin{itemize}
+        \item discussions with Yue Chen, Yangzhou Liu and Bing Yuan;
+        \item vast contributions by ChatGPT and Gemini AI;
+        \item support from my family and friends over the years.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thanks}
+    \centerline{Thanks}
+\end{frame}
 
 \end{document}
