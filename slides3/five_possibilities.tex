@@ -696,6 +696,20 @@ A well-known example is word2vec:
   \]
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Conclusion: a new calculus for mixed operations}
+    We have shown that:
+    \begin{itemize}
+        \item Mixed additive/multiplicative change admits a contact geometry on $(u,v,a)$ with $\alpha=da-\omega$, $\omega=\mu\,du+\lambda a\,dv$; $\mathcal{H}=\ker\alpha$ has basis $\{D_u,D_v\}$ and $\alpha$ is contact for $\mu\lambda\neq 0$.
+        \item The expression differential $\delta$ projects $d$ to $\ker\alpha$: $\delta F=dF-(\partial_aF)\alpha$, with chain rules and directional synthesis via $D_\theta$.
+        \item Non-commutativity/curvature are encoded by $[D_u,D_v]=\mu\lambda\,\partial_a$ and $\delta^2F=\mu\lambda(\partial_aF)\,du\wedge dv$; circulation-area and de Rham compatibility hold.
+        \item Legendrian flow obeys $\frac{da}{ds}=\mu\cos\theta+\lambda a\sin\theta$; rectification $y=\arcsin(\lambda a/\mu)$ yields $\|\nabla y\|=\lambda$ and stabilizes numerics; natural units $(\tilde u,\tilde v)$ simplify formulas.
+        \item An affine–Appell basis $B_n(a,v)=e^{-n\tilde v}a^n$ is closed under $D_u,D_v$, enabling explicit differentiation/integration and constructive antiderivatives for mixed expressions.
+    \end{itemize}
+\end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Possibility 4: A New Atlas for Complex Analysis?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
