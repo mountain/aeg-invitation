@@ -558,8 +558,6 @@ A well-known example is word2vec:
     \end{itemize}
     \begin{center}
         \includegraphics[width=0.4\textwidth]{../images/knot_4_1}
-
-        {\small $4_1$ knot}
     \end{center}
 \end{frame}
 
@@ -581,10 +579,9 @@ This forces the condition $t^2 - 3t + 1 = 0$
 
 \begin{frame}
     \frametitle{When the Alexander polynomial meets the cyclotomic polynomial}
-    Cyclotomic polynomials appear in the global arithmetic torsion of the AEG path; for example, $$\tau(p) = \frac{-\Delta_{4_1}(a)(a^2-1)}{a^2}$$.
+    Cyclotomic polynomials appear in the global arithmetic torsion of the AEG path; $$\tau(p) = \frac{-\Delta_{4_1}(a)(a^2-1)}{a^2}$$.
     \begin{center}
-        \includegraphics[width=0.5\textwidth]{../images/alexander_4_1}
-        {\small Alexander-coded path}
+        \includegraphics[width=0.4\textwidth]{../images/alexander_4_1}
     \end{center}
 \end{frame}
 
@@ -1037,6 +1034,20 @@ This forces the condition $t^2 - 3t + 1 = 0$
 \end{frame}
 
 \begin{frame}
+    \frametitle{Recap: arithmetic torsion and area}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{../images/19-curl}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{A picture: torsion is "tearing" from the flat}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{../images/tearing-paper}
+    \end{center}
+\end{frame}
+
+\begin{frame}
     \frametitle{ACS and RG: commutative coordinates and scale}
     \begin{itemize}
         \item Accumulative Commutative Space (ACS) assigns to any arithmetic path $\gamma$ the coordinates
@@ -1050,43 +1061,6 @@ This forces the condition $t^2 - 3t + 1 = 0$
             \item $M$ encodes the \emph{evolutionary scale} (log-scale) accumulated by multiplicative steps.
         \end{itemize}
         \item Minimal RG perspective: varying $M$ probes effective dynamics (driven by addition and local flows) at different scales. ACS provides a commutative plane to compare paths across scales.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{AEG flow as a beta-function analog}
-    \begin{itemize}
-        \item Core flow equation for the assignment $a$ along direction $\theta$:
-        \[
-            \frac{da}{ds} = \mu \cos\theta + \lambda a \sin\theta,
-        \]
-        and a coordinate-independent magnitude
-        \[
-            \|\nabla a\| = \sqrt{\mu^2 + a^2\lambda^2}.
-        \]
-        \item RG analogy:
-        \begin{itemize}
-            \item The $\mu$ term contributes a scale-independent drive; the $\lambda a$ term contributes a \emph{scale-dependent} drive.
-            \item Changing $M$ (accumulated $\lambda$) alters the relative influence of the multiplicative term, akin to scale-dependent couplings in RG.
-        \end{itemize}
-        \item Dual timescales: addition $\Rightarrow$ dynamical time; multiplication $\Rightarrow$ evolutionary time/scale. ACS tracks evolutionary time directly via $M$.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Arithmetic torsion: scale-weighted invariant in ACS}
-    \begin{itemize}
-        \item Global arithmetic torsion for a surface $\Sigma_\gamma$ bounded by path $\gamma$:
-        \[
-            \tau(\gamma) = \iint_{\Sigma_\gamma} e^{M}\, dA \wedge dM.
-        \]
-        \item The factor $e^M$ \emph{weights} contributions by scale, embedding RG-like reweighting directly into the geometric invariant.
-        \item Implications:
-        \begin{itemize}
-            \item Fixed points and phases leave characteristic signatures in ACS: e.g., $M\rightarrow -\infty$ (vanishing scale), $M=0$ (unit scale).
-            \item Comparing paths at different scales becomes a surface integral in $(A,M)$ with explicit scale dependence.
-        \end{itemize}
-        \item This yields a minimalist renormalization lens: effective additive dynamics at evolutionary time $M$ are observed via ACS projections and torsion.
     \end{itemize}
 \end{frame}
 
