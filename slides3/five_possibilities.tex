@@ -411,7 +411,30 @@ A well-known example is word2vec:
 \end{frame}
 
 \begin{frame}
+    \frametitle{Which complexity does volume measure?}
+    It is well known that time and space complexity can trade off against one another.
+    \begin{itemize}
+        \item Time complexity: number of operations (steps)
+        \item Space complexity: memory usage (intermediate results)
+    \end{itemize}
+    This trade-off suggests a common source of complexity. Which notion of complexity does geometric volume quantify?
+\end{frame}
+
+\begin{frame}
     \frametitle{Arithmetic torsion}
+    Non-commutativity leads to arithmetic torsion, which measures the discrepancy between different operation orders.
+    We often denote torsions as \(\tau(p)\) where $p$ is a path.
+    \newline\newline
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            $\tau$ for two operations:
+            $$(x + 1) \times 2 - (x \times 2 + 1) = 1$$
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            $\tau$ for three operations:
+            $$((x + 1) \times 2 + 3) - ((x + 3) \times 2 + 1) = 1$$
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -441,6 +464,35 @@ A well-known example is word2vec:
             \end{center}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Arithmetic torsion and curvature in action}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Grids and Cayley graphs}
+\end{frame}
+
+\begin{frame}
+    \frametitle{One space, two grids and conformal map}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/01-grid-example-1}}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/18-grid-example-2}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+    \begin{center}
+        \[
+            z \mapsto - \frac{1}{z}
+        \]
+    \end{center}
 \end{frame}
 
 \begin{frame}
@@ -495,13 +547,8 @@ A well-known example is word2vec:
 \end{frame}
 
 \begin{frame}
-    \frametitle{Which complexity does volume measure?}
-    It is well known that time and space complexity can trade off against one another.
-    \begin{itemize}
-        \item Time complexity: number of operations (steps)
-        \item Space complexity: memory usage (intermediate results)
-    \end{itemize}
-    This trade-off suggests a common source of complexity. Which notion of complexity does geometric volume quantify?
+    \frametitle{List of supported knots}
+
 \end{frame}
 
 \begin{frame}
