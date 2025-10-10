@@ -206,7 +206,7 @@ A well-known example is word2vec:
         \item Euclidean ball volume: $\mathrm{Vol}(B_r) \propto r^n$ (polynomial in $r$).
     \end{itemize}
     \begin{figure}[ht]\centering
-        \resizebox{0.5\textwidth}{!}{\includegraphics{../images/parallelogram}}
+        \resizebox{0.5\textwidth}{!}{\includegraphics{../images/euclid}}
         \caption{Parallelogram law $\Rightarrow$ Euclidean linearity}
     \end{figure}
 \end{frame}
@@ -468,10 +468,38 @@ A well-known example is word2vec:
 
 \begin{frame}
     \frametitle{Arithmetic torsion and curvature in action}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \begin{figure}[ht]\centering
+                \resizebox{0.95\textwidth}{!}{\includegraphics{../images/hyperbolic-1-2}}
+                \caption{smaller torsion}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{figure}[ht]\centering
+                \resizebox{\textwidth}{!}{\includegraphics{../images/hyperbolic-1-3}}
+                \caption{larger torsion}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
     \frametitle{Grids and Cayley graphs}
+    \begin{columns}
+        \begin{column}{0.3\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/cayley4}}
+            \caption{Free group $<a, b>$}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.7\textwidth}
+            \begin{figure}[ht]\centering
+            \resizebox{0.8\textwidth}{!}{\includegraphics{../images/01-grid-example-1}}
+            \caption{Baumslag–Solitar group $<a, b | b a b^{-1} = a^2 >$}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -497,6 +525,10 @@ A well-known example is word2vec:
 
 \begin{frame}
     \frametitle{Can One Hear the Shape of a Drum?}
+    \begin{figure}[ht]\centering
+    \resizebox{0.8\textwidth}{!}{\includegraphics{../images/isospectral_drums}}
+    \caption{Isospectral drums}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -517,38 +549,43 @@ A well-known example is word2vec:
 \end{frame}
 
 \begin{frame}
-    \frametitle{Fundamental group of a knot complement}
+    \frametitle{Knot $4_1$ and its Alexander polynomial}
+    The knot group of the figure-eight knot $(4_1)$ has the presentation:
+    \begin{itemize}
+        \item Generators: $a, b$
+        \item Relator: $abbbaBAAB = 1$ (where $A=a^{-1}, B=b^{-1}$)
+        \item Alexander polynomial: $\Delta(t) = t^2 - 3t + 1$
+    \end{itemize}
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{../images/knot_4_1}
+
+        {\small $4_1$ knot}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{From the relator to its Alexander polynomial}
+\begin{align*}
+    x &= a(b(b(b(a(B(A(A(B(x))))))))) \\
+    &= a(b(b(b(a(B(A(A(x - 1)))))))) \\
+    &= a(b(b(b(a(B(A((x - 1)t^{-1}))))))) \\
+    &= a(b(b(b(a(B((x - 1)t^{-2})))))) \\
+    &= \cdot\cdot\cdot  \\
+    &= x - (t^2 - 3t + 1)
+\end{align*}
+\[
+x - (t^2 - 3t + 1) = x
+\]
+This forces the condition $t^2 - 3t + 1 = 0$
 \end{frame}
 
 \begin{frame}
     \frametitle{When the Alexander polynomial meets the cyclotomic polynomial}
-    \begin{itemize}
-        \item The figure-eight knot $(4_1)$ has Alexander polynomial $\Delta_{4_1}(t)=t^2-3t+1$.
-        \item An AEG path closes precisely when $\Delta_{4_1}(t)=0$.
-        \item Cyclotomic polynomials appear in the global arithmetic torsion of the AEG path; for example, $$\tau(a) = \frac{-\Delta_{4_1}(a)(a^2-1)}{a^2}$$.
-    \end{itemize}
-    \vspace{0.2cm}
-    \begin{columns}
-        \begin{column}{0.48\textwidth}
-            \begin{center}
-                \includegraphics[width=0.4\textwidth]{../images/knot_4_1}
-
-                {\small $4_1$ knot}
-            \end{center}
-        \end{column}
-        \begin{column}{0.48\textwidth}
-            \begin{center}
-                \includegraphics[width=0.6\textwidth]{../images/alexander_4_1}
-                
-                {\small Alexander-coded path}
-            \end{center}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}
-    \frametitle{List of supported knots}
-
+    Cyclotomic polynomials appear in the global arithmetic torsion of the AEG path; for example, $$\tau(p) = \frac{-\Delta_{4_1}(a)(a^2-1)}{a^2}$$.
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{../images/alexander_4_1}
+        {\small Alexander-coded path}
+    \end{center}
 \end{frame}
 
 \begin{frame}
