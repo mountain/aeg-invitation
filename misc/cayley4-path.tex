@@ -1,0 +1,49 @@
+\documentclass[tikz,border=5]{standalone}
+\usetikzlibrary{lindenmayersystems, arrows.meta}
+\usetikzlibrary{calc}
+
+\pgfdeclarelindenmayersystem{cayley}{
+  \rule{F -> F [ R [F] [+F] [-F] ]}
+  \symbol{R}{
+    \pgflsystemstep=0.5\pgflsystemstep
+  }
+}
+
+\begin{document}
+\begin{tikzpicture}
+% 1. Draw the background tree in gray
+\draw[gray, thin] l-system [l-system={cayley, axiom=[F] [+F] [-F] [++F], step=3cm, order=4, angle=90}];
+
+% Define the center
+\coordinate (start) at (0,0);
+\fill[black] (start) circle (2pt);
+
+% --- Path 1: LLURD (\gamma) ---
+% We manually calculate the coordinates for this path.
+% L = Turn -90 deg, U = Turn +90 deg. Assume we start facing right (0 deg).
+% Let's follow the [-F] branch, which is a -90 deg turn from the start.
+\coordinate (p1_step1) at ++(270:3cm);      % L: From (0,0), turn -90, move 3cm. Now at (0,-3). Turtle facing 270.
+\coordinate (p1_step2) at ($(p1_step1) + (180:1.5cm)$); % L: From (0,-3), turn -90 (rel), move 1.5cm. Facing 180.
+\coordinate (p1_step3) at ($(p1_step2) + (270:0.75cm)$);% U: From (-1.5,-3), turn +90 (rel), move 0.75cm. Facing 270.
+\coordinate (p1_step4) at ($(p1_step3) + (0:0.375cm)$);  % R: From (-1.5,-3.75), turn +90 (rel), move 0.375cm. Facing 0.
+\coordinate (p1_step5) at ($(p1_step4) + (90:0.1875cm)$); % D: From (-1.125,-3.75), turn -90 (rel), move 0.1875cm. Facing 90.
+
+\draw[orange, ultra thick, -{Stealth[length=3mm]}]
+    (start) -- (p1_step1) -- (p1_step2) -- (p1_step3) -- (p1_step4) -- (p1_step5)
+    node[above left, inner sep=2pt, xshift=-3pt] {$\gamma$};
+
+% --- Path 2: DRULL (\bar{\gamma}) ---
+% We'll use the same [-F] branch for D (Down).
+% R = Go straight (0 deg rel), U = Turn +90 deg (rel).
+\coordinate (p2_step1) at ++(270:3cm);      % D: Same as first step of gamma. Now at (0,-3). Turtle facing 270.
+\coordinate (p2_step2) at ($(p2_step1) + (270:1.5cm)$); % R: From (0,-3), go straight (rel), move 1.5cm. Facing 270.
+\coordinate (p2_step3) at ($(p2_step2) + (0:0.75cm)$);  % U: From (0,-4.5), turn +90 (rel), move 0.75cm. Facing 0.
+\coordinate (p2_step4) at ($(p2_step3) + (90:0.375cm)$); % L: From (0.75,-4.5), turn -90 (rel), move 0.375cm. Facing 90.
+\coordinate (p2_step5) at ($(p2_step4) + (180:0.1875cm)$);% L: From (0.75,-4.125), turn -90 (rel), move 0.1875cm. Facing 180.
+
+\draw[purple, ultra thick, -{Stealth[length=3mm]}]
+    (start) -- (p2_step1) -- (p2_step2) -- (p2_step3) -- (p2_step4) -- (p2_step5)
+    node[below right, xshift=5pt, inner sep=2pt] {$\bar{\gamma}$};
+
+\end{tikzpicture}
+\end{document}
